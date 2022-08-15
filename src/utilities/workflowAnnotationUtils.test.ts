@@ -1,4 +1,4 @@
-import {cleanLabel} from '../utilities/workflowAnnotationUtils'
+import { cleanLabel } from '../utilities/workflowAnnotationUtils'
 
 describe('WorkflowAnnotationUtils', () => {
    describe('cleanLabel', () => {
@@ -10,6 +10,10 @@ describe('WorkflowAnnotationUtils', () => {
             'withS0MEinvalidchars'
          )
          expect(cleanLabel('with⚒️emoji')).toEqual('withemoji')
+      })
+      it('should remove slashes from label', () => {
+         expect(cleanLabel('Workflow Name / With Slashes / And Spaces'))
+            .toEqual('Workflow_Name_-_With_Slashes_-_And_Spaces')
       })
    })
 })
